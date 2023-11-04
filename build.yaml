@@ -13,4 +13,5 @@
 #
 ---
 include:
-  - board: rebound_v4
+  - board: nice_nano_v2
+    shield: rebound_v4
