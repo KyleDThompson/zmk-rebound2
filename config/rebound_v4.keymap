@@ -24,6 +24,13 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+		bspc_del: backspace_delete {
+            compatible = "zmk,behavior-mod-morph";
+            label = "BACKSPACE_DELETE";
+            #binding-cells = <0>;
+            bindings = <&kp BACKSPACE>, <&kp DELETE>;
+            mods = <(MOD_LSFT)>;
+        };
     };
 
     keymap {
@@ -31,16 +38,16 @@
         
         default_layer {
 // ----------------------------------------------------------------------------------------------------------------
-// |  ESC  |   Q   |   W   |   E    |  R  |   T  |                |  Y  |    U   |   I   |   O   |   P   |  BSPC |
-// |  TAB  |   A   |   S   |   D    |  F  |   G  |    |      |    |  H  |    J   |   K   |   L   |   '   |   '   |
-// | SHIFT |   Z   |   X   |   C    |  V  |   B  |    |      |    |  N  |    M   |   ,   |   .   |   /   | RETURN|
-// | CTRL  |  ALT  |  GUI  |  NUM   | LWR |  SPC |    |      |    | SPC |  RAISE | LEFT  |  DOWN |  UP   | RIGHT |
+// | GRESC |   Q   |   W   |   E    |  R  |   T  |                |  Y  |    U   |   I   |   O   |   P   |BSPC/DEL|
+// |  TAB  |   A   |   S   |   D    |  F  |   G  |    |      |    |  H  |    J   |   K   |   L   |   '   |   '    |
+// | SHIFT |   Z   |   X   |   C    |  V  |   B  |    |      |    |  N  |    M   |   ,   |   .   |   /   | RETURN |
+// |  NUM  | CTRL  |  ALT  |  GUI   | LWR |  SPC |    |      |    | SPC |  RAISE | LEFT  |  DOWN |  UP   | RIGHT  |
 // ----------------------------------------------------------------------------------------------------------------
 		bindings = <
-&kp TAB &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &kp BSPC
-&kp ESC &kp A &kp S &kp D &kp F &kp G &none &kp H &kp J &kp K &kp L &kp SEMI &kp APOS
+&gresc &kp Q &kp W &kp E &kp R &kp T &kp Y &kp U &kp I &kp O &kp P &bspc_del
+&kp TAB &kp A &kp S &kp D &kp F &kp G &none &kp H &kp J &kp K &kp L &kp SEMI &kp APOS
 &kp LEFT_SHIFT &kp Z &kp X &kp C &kp V &kp B &none &kp N &kp M &kp COMMA &kp PERIOD &kp FSLH &kp RETURN
-&kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &none &mo 1 &kp SPACE &none &kp SPACE &mo 2 &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
+&none &kp LEFT_CONTROL &kp LEFT_ALT &kp LEFT_GUI &mo 1 &kp SPACE &none &kp SPACE &mo 2 &kp LEFT_ARROW &kp DOWN_ARROW &kp UP_ARROW &kp RIGHT_ARROW
                         >;
 
 			sensor-bindings = <&inc_dec_kp DEL BSPC>;
@@ -55,8 +62,8 @@
 // -----------------------------------------------------------------------------------------
 		bindings = <
 &trans &kp EXCL &kp AT &kp HASH &kp DOLLAR &kp PERCENT &kp CARET &kp AMPERSAND &kp STAR &kp LPAR &kp RPAR &trans
-&trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp UNDERSCORE &kp PLUS &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp PIPE
-&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &trans &trans &trans &trans &trans &trans
+&trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &trans &kp F6 &kp UNDERSCORE &kp PLUS &kp LEFT_BRACKET &kp RIGHT_BRACKET &kp PIPE
+&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &trans &kp F12 &trans &trans &trans &trans &trans 
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans 
                         >;
 
@@ -72,8 +79,8 @@
 // -----------------------------------------------------------------------------------------
 		bindings = <
 &trans &kp N1 &kp N2 &kp N3 &kp N4 &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp N0 &trans
-&trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &kp F6 &kp MINUS &kp EQUAL &kp LEFT_BRACE &kp RIGHT_BRACE &kp BSLH
-&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &kp F12 &trans &trans &trans &trans &trans &trans
+&trans &kp F1 &kp F2 &kp F3 &kp F4 &kp F5 &trans &kp F6 &kp MINUS &kp EQUAL &kp LEFT_BRACE &kp RIGHT_BRACE &kp BSLH
+&trans &kp F7 &kp F8 &kp F9 &kp F10 &kp F11 &trans &kp F12 &trans &trans &trans &trans &trans 
 &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans 
                         >;
 
